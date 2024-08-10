@@ -1,0 +1,60 @@
+{% extends "mastertemplate.html" %}
+
+{% block content %}
+<h1>Registrieren</h1>
+
+<form method="POST" action="/register/">
+    {% csrf_token %}
+    <input type="hidden" name="redirect" value="{{ redirect }}">
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input name="username" class="mdl-textfield__input" type="text">
+            <label class="mdl-textfield__label" for="sample3">Benutzername</label>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input name="firstname" class="mdl-textfield__input" type="text">
+            <label class="mdl-textfield__label" for="sample3">Firstname</label>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input name="lastname" class="mdl-textfield__input" type="text">
+            <label class="mdl-textfield__label" for="sample3">Lastname</label>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="email" type="email">
+            <label class="mdl-textfield__label" for="sample3">E-Mail</label>
+        </div>
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="password" type="password">
+            <label class="mdl-textfield__label" for="sample3">Password</label>
+        </div>
+            {% if wrongPassword %}
+            <p class="color-red">Passwörter stimmen nicht über ein!</p>
+            {% endif %}
+    </div>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" name="repeatpassword" type="password">
+            <label class="mdl-textfield__label" for="sample3">Password wiederholen</label>
+        </div>
+            {% if wrongPassword %}
+            <p class="color-red">Passwörter stimmen nicht über ein!</p>
+            {% endif %}
+    </div>
+    <div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Login
+        </button>
+    </div>
+</form>
+
+
+
+{% endblock %}
